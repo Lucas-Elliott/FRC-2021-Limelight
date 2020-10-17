@@ -29,10 +29,11 @@ public class Robot extends TimedRobot {
   private NetworkTableEntry ty = table.getEntry("ty");
   private NetworkTableEntry ta = table.getEntry("ta");
 
-      //read values periodically
-      private double x = tx.getDouble(0.0);
-      private double y = ty.getDouble(0.0);
-      private double area = ta.getDouble(0.0);
+  //read values periodically
+  private double x = tx.getDouble(0.0);
+  private double y = ty.getDouble(0.0);
+  private double area = ta.getDouble(0.0);
+
    // Telemetry variables
    private double m_lastPort0 = 1000.0;
    private double m_lastPort1 = 1000.0;
@@ -147,6 +148,17 @@ public class Robot extends TimedRobot {
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
     displayTelemetry();
+
+    table = NetworkTableInstance.getDefault().getTable("limelight");
+    tx = table.getEntry("tx");
+    ty = table.getEntry("ty");
+    ta = table.getEntry("ta");
+
+  //read values periodically
+    x = tx.getDouble(0.0);
+    y = ty.getDouble(0.0);
+    area = ta.getDouble(0.0);
+
   }
 
   /**
